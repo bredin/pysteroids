@@ -36,10 +36,13 @@ def main():
         screen.fill((0, 0, 0))  # Clear the screen with black
         for sprite in updateable:
             sprite.update(dt)
-        for sprite in asteroids:
-            if sprite.detect_collision(player):
+        for asteroid in asteroids:
+            if asteroid.detect_collision(player):
                 exit("I am died!")  # Exit the game if player collides with an asteroid
-                # Handle collision (e.g., end game, reduce health, etc.)
+            for shot in shots:
+                if shot.detect_collision(asteroid):
+                    shot.kill()
+                    asteroid.split()
 
         for sprite in drawable:
             sprite.draw(screen)
