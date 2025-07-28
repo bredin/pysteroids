@@ -19,6 +19,8 @@ def main():
                 return
             
         screen.fill((0, 0, 0))  # Clear the screen with black
+
+        player.update(dt)  # Update the player
         player.draw(screen)  # Draw the player
 
         pygame.display.flip()  # Update the display
